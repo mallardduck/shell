@@ -57,14 +57,14 @@ RUN echo 'shell:x:1000:1000:shell,,,:/home/shell:/bin/bash' > /etc/passwd && \
     mkdir /home/shell/.kuberlr && \
     touch /home/shell/.kuberlr/kuberlr.conf && \
     echo "AllowDownload = false" >> /home/shell/.kuberlr/kuberlr.conf && \
-    echo 'SystemPath = "/usr/bin"' >> /home/shell/.kuberlr/kuberlr.conf && \
+    echo 'SystemPath = "/usr/local/bin"' >> /home/shell/.kuberlr/kuberlr.conf && \
     echo "Timeout = 6" >> /home/shell/.kuberlr/kuberlr.conf && \
     chown -R shell /home/shell && \
     chmod 700 /run
 
 COPY --chown=root:root --chmod=0755 --from=helm /helm/bin/helm /usr/local/bin/
 COPY --chown=root:root --chmod=0755 --from=build /k9s /kustomize* /usr/local/bin/
-COPY --chown=root:root --chmod=0755 --from=kuberlr /usr/bin/kubectl* /usr/bin/
+COPY --chown=root:root --chmod=0755 --from=kuberlr /usr/bin/kubectl* /usr/local/bin/
 COPY --chown=root:root --chmod=0755 --from=kuberlr /bin/kuberlr /bin/kubectl /bin/
 COPY --chown=root:root --chmod=0755 package/helm-cmd package/welcome /usr/local/bin/
 COPY --chown=1000:1000 --chmod=0755 package/kustomize.sh /home/shell/
