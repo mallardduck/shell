@@ -63,7 +63,7 @@ RUN echo 'shell:x:1000:1000:shell,,,:/home/shell:/bin/bash' > /etc/passwd && \
     chmod 700 /run
 
 COPY --chown=root:root --chmod=0755 --from=helm /helm/bin/helm /usr/local/bin/
-COPY --chown=root:root --chmod=0755 --from=build /kubectl /k9s /kustomize* /usr/local/bin/
+COPY --chown=root:root --chmod=0755 --from=build /k9s /kustomize* /usr/local/bin/
 COPY --chown=root:root --chmod=0755 --from=kuberlr /usr/bin/kubectl* /usr/bin/
 COPY --chown=root:root --chmod=0755 --from=kuberlr /bin/kuberlr /bin/kubectl /bin/
 COPY --chown=root:root --chmod=0755 package/helm-cmd package/welcome /usr/local/bin/
